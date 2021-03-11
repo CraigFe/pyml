@@ -3,18 +3,18 @@
   (modules numpy py pycaml pyml_arch pytypes pywrappers)
   (c_names numpy_stubs pyml_stubs)
   (wrapped false)
-  (libraries bigarray stdcompat pyutils))
+  (libraries bigarray pyutils))
 
 (executables
   (names generate)
   (modules generate)
-  (libraries stdcompat pyutils))
+  (libraries pyutils))
 
 (library
   (name pyutils)
   (modules pyutils)
   (wrapped false)
-  (libraries stdcompat unix))
+  (libraries unix))
 
 (rule
   (targets pywrappers.ml pyml.h pyml_dlsyms.inc pyml_wrappers.inc)
@@ -30,14 +30,14 @@
   (name pyml_tests_common)
   (modules pyml_tests_common)
   (wrapped false)
-  (libraries pyml stdcompat))
+  (libraries pyml))
 
 (test
   (name numpy_tests)
   (modules numpy_tests)
-  (libraries pyml pyml_tests_common stdcompat pyutils))
+  (libraries pyml pyml_tests_common pyutils))
 
 (test
   (name pyml_tests)
   (modules pyml_tests)
-  (libraries pyml pyml_tests_common stdcompat pyutils))
+  (libraries pyml pyml_tests_common pyutils))

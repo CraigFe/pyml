@@ -1,8 +1,6 @@
 module Stdlib_printexc = Printexc
 (* Workaround for opaque Printexc bug in Stdcompat 9 *)
 
-open Stdcompat
-
 type pyobject = Pytypes.pyobject
 
 type input = Pytypes.input = Single | File | Eval

@@ -1,5 +1,3 @@
-open Stdcompat
-
 let option_find f x =
   try Some (f x)
   with Not_found -> None
