@@ -21,6 +21,8 @@
   (deps (:gen generate.exe))
   (action (run %{gen})))
 
+(rule (copy pyml_arch_unix.ml pyml_arch_linux.ml))
+
 (rule
   (targets pyml_arch.ml)
   (deps (:pyml_arch pyml_arch_%{ocaml-config:system}.ml))
