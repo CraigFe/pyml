@@ -1,5 +1,6 @@
 (library
   (name pyml)
+  (public_name pyml)
   (modules numpy py pycaml pyml_arch pytypes pywrappers)
   (c_names numpy_stubs pyml_stubs)
   (wrapped false)
@@ -12,6 +13,7 @@
 
 (library
   (name pyutils)
+  (public_name pyml.pyutils)
   (modules pyutils)
   (wrapped false)
   (libraries unix))
