@@ -1,6 +1,14 @@
 module Stdlib_printexc = Printexc
 (* Workaround for opaque Printexc bug in Stdcompat 9 *)
 
+let rec list_find_map f = function
+  | [] -> None
+  | x :: l ->
+     begin match f x with
+       | Some _ as result -> result
+       | None -> list_find_map f l
+     end
+
 type pyobject = Pytypes.pyobject
 
 type input = Pytypes.input = Single | File | Eval
@@ -451,7 +459,7 @@ let find_library_path version_major version_minor python_full_path =
           Some (libpython_from_pythonhome version_major version_minor
             python_full_path))));
   ] in
-  match List.find_map (fun f -> f ()) heuristics with
+  match list_find_map (fun f -> f ()) heuristics with
   | None -> failwith "Cannot find Python library"
   | Some paths -> paths
 
